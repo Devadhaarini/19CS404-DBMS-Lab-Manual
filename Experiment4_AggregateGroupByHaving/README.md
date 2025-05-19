@@ -37,124 +37,156 @@ HAVING condition;
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+Write a SQL query to find the total amount of fruits with a unit type of 'LB'. Note: Inventory attribute contains amount of fruits Table: fruits
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT
+SUM(inventory) AS total
+FROM fruits
+WHERE unit LIKE '%LB%';
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/0f367233-c7ad-4303-adf9-9f35e5055a11)
 
-![Output1](output.png)
 
 **Question 2**
----
--- Paste Question 2 here
+Write a SQL query to find how many employees have an income greater than 50K? Table: employee
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT
+COUNT(*) AS employees_count
+FROM employee
+WHERE income>50000;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/7551f886-37b8-4be1-99c6-caca7ec6ba15)
 
-![Output2](output.png)
 
 **Question 3**
----
--- Paste Question 3 here
+Write a SQL query to find how many employees work in California? Table: employee
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT
+COUNT(*) AS employees_in_california
+FROM employee
+WHERE city='California';
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/9abbb4bd-ec48-492a-9d78-722d0e7c3d5e)
 
-![Output3](output.png)
 
 **Question 4**
----
--- Paste Question 4 here
+How many medical records does each doctor have? Sample table:MedicalRecords Table
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT
+DoctorID,
+COUNT(*) AS TotalRecords
+FROM MedicalRecords
+GROUP BY DoctorID
+ORDER BY DoctorID ASC;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/84eaa734-3a45-4f2f-99a9-f0f6a602366f)
 
-![Output4](output.png)
 
 **Question 5**
----
--- Paste Question 5 here
+What is the average duration of insurance coverage for patients covered by each insurance company? Sample table:Insurance Table
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT
+InsuranceCompany,
+ABS(AVG(StartDate-EndDate)) AS AvgCoverageDurationDays
+FROM Insurance
+GROUP BY InsuranceCompany;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/237fc28f-f93c-40ba-906a-e6d15f324cbd)
 
-![Output5](output.png)
 
 **Question 6**
----
--- Paste Question 6 here
+How many medical records are there for each patient? Sample table:MedicalRecords Table
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT
+PatientID,
+COUNT(*) AS TotalRecords
+FROM MedicalRecords
+GROUP BY PatientID
+ORDER BY PatientID;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/41a355dd-a7b0-427d-a9a1-9c8b8e7fa909)
 
-![Output6](output.png)
 
 **Question 7**
----
--- Paste Question 7 here
+Write the SQL query that achieves the grouping of data by age, calculates the minimum income for each age group, and includes only those age groups where the minimum income is less than 1,000,000. Sample table: employee
 
-```sql
--- Paste your SQL code below for Question 7
+```sqlSELECT
+age,
+MIN(income) AS Income
+FROM employee
+GROUP BY age
+HAVING MIN(income)<1000000;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/68fbba47-e1bf-4a9f-99f5-9b54317a923a)
 
-![Output7](output.png)
 
 **Question 8**
----
--- Paste Question 8 here
+Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the average work hours for each date, and excludes dates where the average work hour is not less than 10. Sample table: employee1
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT
+jdate,
+AVG(workhour) AS "AVG(workhour)"
+FROM employee1
+GROUP BY jdate
+HAVING AVG(workhour)<10;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/faed34c5-7399-4e20-bb75-1f42ce13758d)
 
-![Output8](output.png)
 
 **Question 9**
----
--- Paste Question 9 here
+Write the SQL query that achieves the selection of product names and the maximum price for each category from the "products" table, and includes only those products where the maximum price is greater than 15. Sample table: products
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT
+category_id,
+product_name,
+MAX(price) AS Price
+FROM products
+GROUP BY category_id 
+HAVING MAX(price)>15;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/be83f7fc-29a4-4dcf-8637-13d46c52e57e)
 
-![Output9](output.png)
 
 **Question 10**
----
--- Paste Question 10 here
+Write the SQL query that accomplishes the selection of average price for each category from the "products" table and includes only those products where the average price falls between 10 and 15. Sample table: products
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT
+category_id,
+AVG(price) AS 'AVG(Price)'
+FROM products
+GROUP BY category_id
+HAVING AVG(price) BETWEEN 10 AND 15;
 ```
 
 **Output:**
-
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/f69a6fde-c554-4ed7-b642-d48047b63ce2)
 
 
 ## RESULT
